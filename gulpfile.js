@@ -13,8 +13,9 @@ const watch = path.join(os.tmpdir(), `${config.theme_id}.theme`);
 
 gulp.task('watch', () => {
   themekit.command('watch', {
-    allowLive: true,
+    dir: 'src',
     env: NODE_ENV,
+    allowLive: true,
     notify: watch,
   });
 });
@@ -52,12 +53,20 @@ gulp.task('clean', () => {
 gulp.task(
   'get',
   gulp.series('clean', function process() {
-    return themekit.command('get', { allowLive: true, env: NODE_ENV });
+    return themekit.command('get', {
+      dir: 'src',
+      env: NODE_ENV,
+      allowLive: true,
+    });
   })
 );
 
 gulp.task('deploy', () => {
-  return themekit.command('deploy', { allowLive: true, env: NODE_ENV });
+  return themekit.command('deploy', {
+    dir: 'src',
+    env: NODE_ENV,
+    allowLive: true,
+  });
 });
 
 gulp.task('dev', gulp.series('deploy', gulp.parallel('watch', 'serve')));
