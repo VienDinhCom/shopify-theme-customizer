@@ -1,6 +1,6 @@
 # 🛍 Shopify Theme Customizer
 
-A effective development tool for for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [BrowserSync](https://github.com/Browsersync/browser-sync), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
+An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [BrowserSync](https://github.com/Browsersync/browser-sync), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
 
 ## Experience
 
