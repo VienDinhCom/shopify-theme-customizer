@@ -82,7 +82,7 @@ To fill the `theme_id` property, please follow these steps:
 
 To download your theme, you need to follow the [**Configuration**](#configuration) to config the `production` section in the `config.yml` file.
 
-Next, run this command to download the theme to your **production** store.
+Next, run this command to download the theme from your **production** store.
 
 ```bash
 yarn get
