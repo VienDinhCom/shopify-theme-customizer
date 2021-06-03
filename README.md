@@ -124,3 +124,9 @@ Next, run this command to deploy the theme to your **production** store.
 ```bash
 yarn deploy
 ```
+
+## Related Projects
+
+* **[Next Shopify Storefront](https://github.com/Maxvien/next-shopify-storefront)** • A real-world Shopping Cart built with TypeScript, NextJS, React, Redux, Apollo Client, Shopify Storefront GraphQL API, ... and Material UI.
+* **[Bootstrap Shopify Theme](https://github.com/Maxvien/bootstrap-shopify-theme)** • A free Shopify Theme built with Bootstrap, BEM, Theme Tools, Swiper, Gulp, Parcel, Liquid, SASS, PostCSS, ESNext, ... and Passion.
+* **[Shopify Data Faker](https://github.com/Maxvien/shopify-data-faker)** • A Shopify development tool for generating dummy store data.
