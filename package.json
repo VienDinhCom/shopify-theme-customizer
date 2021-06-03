@@ -44,5 +44,21 @@
       }
     },
     "extends": "eslint:recommended"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "gulp",
+    "sass",
+    "eslint",
+    "vscode",
+    "prettier",
+    "liquid",
+    "shopify",
+    "vscode-extension",
+    "browser-sync",
+    "shopify-theme",
+    "shopify-theme-kit",
+    "shopify-theme-check",
+    "shopify-theme-customizer"
+  ]
 }
