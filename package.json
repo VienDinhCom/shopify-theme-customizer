@@ -9,6 +9,16 @@
   },
   "devDependencies": {
     "env-kit": "^2.0.4",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-load-plugins": "^2.0.7",
+    "parcel-bundler": "^1.12.5"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
