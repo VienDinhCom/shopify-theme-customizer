@@ -11,8 +11,7 @@
 # development
 /.cache/
 /dist/
-/config.yml
-
+/.env
 
 # misc
 .DS_Store
@@ -23,8 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env
-
+# locks
 yarn.lock
 package-lock.json
