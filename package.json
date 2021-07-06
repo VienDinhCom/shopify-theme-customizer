@@ -1,0 +1,14 @@
+{
+  "name": "shopify-theme-customizer",
+  "version": "2.0.0",
+  "repository": "https://github.com/Maxvien/shopify-theme-customizer.git",
+  "author": "Vien Dinh <maxvien@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "devDependencies": {
+    "env-kit": "^2.0.4",
+    "gulp": "^4.0.2"
+  }
+}
