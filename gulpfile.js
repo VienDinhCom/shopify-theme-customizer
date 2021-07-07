@@ -1,10 +1,10 @@
 const os = require('os');
 const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const yargs = require('yargs');
 const Bundler = require('parcel-bundler');
 const themekit = require('@shopify/themekit');
-const path = require('path');
 const plugins = require('gulp-load-plugins')();
 
 /* Options
@@ -114,20 +114,16 @@ gulp.task(
     // Bundle
     gulp.task('bundle')({ watch: true });
 
-    // ThemeKit
-    const notify = path.join(__dirname, 'notify');
+    // Watch
+    const notify = path.join(os.tmpdir(), `theme.update`);
 
+    fs.writeFileSync(notify, 'notify');
+    plugins.livereload.listen({ quiet: true });
     themekit.command('watch', { ...options, notify });
 
-    // LiveReload
-    plugins.livereload.listen({ quiet: true });
-
     gulp.watch(notify, function reload() {
-      return gulp.src(notify).pipe(plugins.wait(1500)).pipe(plugins.livereload());
+      return gulp.src(notify).pipe(plugins.wait(2000)).pipe(plugins.livereload());
     });
-
-    // Open
-    setTimeout(() => themekit.command('open', { ...options }), 3000);
   })
 );
 
@@ -139,6 +135,12 @@ gulp.task(
     return themekit.command('deploy', { ...options, allowLive: true });
   })
 );
+
+/* Open
+----------------------------------------------------*/
+gulp.task('open', () => {
+  return themekit.command('open', { ...options });
+});
 
 /* Serve
 ----------------------------------------------------*/
