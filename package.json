@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "open": "gulp open",
+    "lint": "gulp lint",
     "watch": "gulp watch",
-    "deploy": "gulp deploy",
-    "download": "gulp download:config"
+    "deploy": "gulp deploy"
   },
   "devDependencies": {
     "@shopify/themekit": "^1.1.9",

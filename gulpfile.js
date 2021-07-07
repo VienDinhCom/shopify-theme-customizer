@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const yargs = require('yargs');
+const command = require('child_process');
 const Bundler = require('parcel-bundler');
 const themekit = require('@shopify/themekit');
 const plugins = require('gulp-load-plugins')();
@@ -117,12 +118,27 @@ gulp.task(
   })
 );
 
+/* Build
+----------------------------------------------------*/
+gulp.task('build', gulp.series('clean', 'sync', 'bundle'));
+
 /* Deploy
 ----------------------------------------------------*/
 gulp.task(
   'deploy',
-  gulp.series('clean', 'sync', 'bundle', function proceeding() {
+  gulp.series('build', function proceeding() {
     return themekit.command('deploy', { ...options, allowLive: true });
+  })
+);
+
+gulp.task(
+  'lint',
+  gulp.series('build', function proceeding(callback) {
+    command.exec('shopify theme check dist', function (error, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      callback(error);
+    });
   })
 );
 
