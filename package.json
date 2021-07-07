@@ -5,7 +5,7 @@
   "author": "Vien Dinh <maxvien@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "gulp": "gulp"
+    "serve": "gulp serve"
   },
   "devDependencies": {
     "env-kit": "^2.0.4",
@@ -14,7 +14,8 @@
     "gulp-clean": "^0.4.0",
     "gulp-load-plugins": "^2.0.7",
     "parcel-bundler": "^1.12.5",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "yargs": "^17.0.1"
   },
   "prettier": {
     "tabWidth": 2,

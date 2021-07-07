@@ -12,6 +12,7 @@
 /.cache/
 /dist/
 /.env
+/config.yml
 
 # misc
 .DS_Store

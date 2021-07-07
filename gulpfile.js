@@ -1,15 +1,13 @@
 const fs = require('fs');
 const gulp = require('gulp');
-const envKit = require('env-kit');
-const exitHook = require('exit-hook');
-const plugins = require('gulp-load-plugins')();
-const { execSync, spawnSync } = require('child_process');
-
+const yargs = require('yargs');
 const Bundler = require('parcel-bundler');
+const plugins = require('gulp-load-plugins')();
 
-exitHook(() => {
-  console.log('Exiting');
-});
+/* Environment
+----------------------------------------------------*/
+const { argv } = yargs(process.argv);
+const environment = argv.env || 'development';
 
 /* Theme
 ----------------------------------------------------*/
