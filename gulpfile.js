@@ -32,27 +32,13 @@ const theme = {
     templates: 'src/templates/**/*.liquid',
   },
   tasks: {
-    assets: () => {
-      return gulp.src(theme.sources.assets).pipe(gulp.dest('dist/assets'));
-    },
-    config: () => {
-      return gulp.src(theme.sources.config).pipe(gulp.dest('dist/config'));
-    },
-    layout: () => {
-      return gulp.src(theme.sources.layout).pipe(gulp.dest('dist/layout'));
-    },
-    locales: () => {
-      return gulp.src(theme.sources.locales).pipe(gulp.dest('dist/locales'));
-    },
-    sections: () => {
-      return gulp.src(theme.sources.sections).pipe(gulp.dest('dist/sections'));
-    },
-    snippets: () => {
-      return gulp.src(theme.sources.snippets).pipe(gulp.dest('dist/snippets'));
-    },
-    templates: () => {
-      return gulp.src(theme.sources.templates).pipe(gulp.dest('dist/templates'));
-    },
+    assets: () => gulp.src(theme.sources.assets).pipe(gulp.dest('dist/assets')),
+    config: () => gulp.src(theme.sources.config).pipe(gulp.dest('dist/config')),
+    layout: () => gulp.src(theme.sources.layout).pipe(gulp.dest('dist/layout')),
+    locales: () => gulp.src(theme.sources.locales).pipe(gulp.dest('dist/locales')),
+    sections: () => gulp.src(theme.sources.sections).pipe(gulp.dest('dist/sections')),
+    snippets: () => gulp.src(theme.sources.snippets).pipe(gulp.dest('dist/snippets')),
+    templates: () => gulp.src(theme.sources.templates).pipe(gulp.dest('dist/templates')),
   },
 };
 
@@ -112,14 +98,18 @@ gulp.task(
     gulp.watch(theme.sources.templates, theme.tasks.templates);
 
     // Bundle
-    gulp.task('bundle')({ watch: true });
+    await gulp.task('bundle')({ watch: true });
+
+    // Open
+    themekit.command('open', { ...options });
 
     // Watch
     const notify = path.join(os.tmpdir(), `theme.update`);
 
     fs.writeFileSync(notify, 'notify');
-    plugins.livereload.listen({ quiet: true });
     themekit.command('watch', { ...options, notify });
+
+    plugins.livereload.listen({ quiet: true });
 
     gulp.watch(notify, function reload() {
       return gulp.src(notify).pipe(plugins.wait(2000)).pipe(plugins.livereload());
