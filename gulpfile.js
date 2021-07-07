@@ -2,6 +2,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const yargs = require('yargs');
 const Bundler = require('parcel-bundler');
+const themekit = require('@shopify/themekit');
 const plugins = require('gulp-load-plugins')();
 
 /* Environment
@@ -80,29 +81,39 @@ gulp.task('bundle', async (options) => {
   }
 });
 
-/* Watch
-----------------------------------------------------*/
-gulp.task('watch', async () => {
-  gulp.watch(theme.sources.assets, theme.tasks.assets);
-  gulp.watch(theme.sources.config, theme.tasks.config);
-  gulp.watch(theme.sources.layout, theme.tasks.layout);
-  gulp.watch(theme.sources.locales, theme.tasks.locales);
-  gulp.watch(theme.sources.sections, theme.tasks.sections);
-  gulp.watch(theme.sources.snippets, theme.tasks.snippets);
-  gulp.watch(theme.sources.templates, theme.tasks.templates);
-
-  gulp.task('bundle')({ minify: false, watch: true });
-});
-
 /* Clean
 ----------------------------------------------------*/
 gulp.task('clean', () => {
   return gulp.src(['dist/*', '.cache/*']).pipe(plugins.clean({ force: true }));
 });
 
-gulp.task('serve', gulp.series('clean', 'copy', 'watch'));
+gulp.task(
+  'watch',
+  gulp.series('clean', 'copy', async function proceeding() {
+    gulp.watch(theme.sources.assets, theme.tasks.assets);
+    gulp.watch(theme.sources.config, theme.tasks.config);
+    gulp.watch(theme.sources.layout, theme.tasks.layout);
+    gulp.watch(theme.sources.locales, theme.tasks.locales);
+    gulp.watch(theme.sources.sections, theme.tasks.sections);
+    gulp.watch(theme.sources.snippets, theme.tasks.snippets);
+    gulp.watch(theme.sources.templates, theme.tasks.templates);
 
-gulp.task('build', gulp.series('clean', 'copy', 'bundle'));
+    gulp.task('bundle')({ minify: false, watch: true });
+
+    themekit.command('watch', { dir: 'dist', env: environment });
+  })
+);
+
+gulp.task(
+  'deploy',
+  gulp.series('clean', 'copy', 'bundle', async function proceeding() {
+    themekit.command('deploy', {
+      dir: 'dist',
+      env: environment,
+      allowLive: true,
+    });
+  })
+);
 
 /* Serve
 ----------------------------------------------------*/

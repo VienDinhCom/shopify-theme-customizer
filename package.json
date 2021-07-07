@@ -5,9 +5,12 @@
   "author": "Vien Dinh <maxvien@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "serve": "gulp serve"
+    "watch": "gulp watch",
+    "build": "gulp build",
+    "deploy": "gulp deploy"
   },
   "devDependencies": {
+    "@shopify/themekit": "^1.1.9",
     "env-kit": "^2.0.4",
     "exit-hook": "^2.2.1",
     "gulp": "^4.0.2",
