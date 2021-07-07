@@ -1,14 +1,21 @@
+const os = require('os');
 const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const yargs = require('yargs');
 const Bundler = require('parcel-bundler');
 const themekit = require('@shopify/themekit');
 const plugins = require('gulp-load-plugins')();
 
-/* Environment
+/* Options
 ----------------------------------------------------*/
 const { argv } = yargs(process.argv);
-const environment = argv.env || 'development';
+
+const options = {
+  dir: 'dist',
+  env: argv.env || 'development',
+  'no-theme-kit-access-notifier': true,
+};
 
 /* Theme
 ----------------------------------------------------*/
@@ -47,10 +54,10 @@ const theme = {
   },
 };
 
-/* Copy
+/* Sync
 ----------------------------------------------------*/
 gulp.task(
-  'copy',
+  'sync',
   gulp.parallel(
     theme.tasks.assets,
     theme.tasks.config,
@@ -64,20 +71,21 @@ gulp.task(
 
 /* Bundle
 ----------------------------------------------------*/
-gulp.task('bundle', async (options) => {
+gulp.task('bundle', async ({ watch }) => {
   const entry = 'src/main.js';
 
   if (fs.existsSync(entry)) {
+    process.env.NODE_ENV = watch ? 'development' : 'production';
+
     const bundler = new Bundler(entry, {
       hmr: false,
-      minify: true,
-      watch: false,
+      watch: watch,
+      minify: !watch,
       sourceMaps: false,
       outDir: 'dist/assets',
-      ...options,
     });
 
-    bundler.bundle();
+    await bundler.bundle();
   }
 });
 
@@ -87,9 +95,12 @@ gulp.task('clean', () => {
   return gulp.src(['dist/*', '.cache/*']).pipe(plugins.clean({ force: true }));
 });
 
+/* Watch
+----------------------------------------------------*/
 gulp.task(
   'watch',
-  gulp.series('clean', 'copy', async function proceeding() {
+  gulp.series('clean', 'sync', async function proceeding() {
+    // Sync
     gulp.watch(theme.sources.assets, theme.tasks.assets);
     gulp.watch(theme.sources.config, theme.tasks.config);
     gulp.watch(theme.sources.layout, theme.tasks.layout);
@@ -98,20 +109,30 @@ gulp.task(
     gulp.watch(theme.sources.snippets, theme.tasks.snippets);
     gulp.watch(theme.sources.templates, theme.tasks.templates);
 
-    gulp.task('bundle')({ minify: false, watch: true });
+    // Bundle
+    gulp.task('bundle')({ watch: true });
 
-    themekit.command('watch', { dir: 'dist', env: environment });
+    // ThemeKit
+    const notify = os.tmpdir();
+
+    themekit.command('watch', { ...options, notify: `${notify}/theme.update` });
+    themekit.command('open', { ...options });
+
+    // LiveReload
+    plugins.livereload.listen({ quiet: true });
+
+    gulp.watch(`${notify}/**/*`, function reload() {
+      return gulp.src(notify).pipe(plugins.wait(1000)).pipe(plugins.livereload());
+    });
   })
 );
 
+/* Deploy
+----------------------------------------------------*/
 gulp.task(
   'deploy',
-  gulp.series('clean', 'copy', 'bundle', async function proceeding() {
-    themekit.command('deploy', {
-      dir: 'dist',
-      env: environment,
-      allowLive: true,
-    });
+  gulp.series('clean', 'sync', 'bundle', function proceeding() {
+    return themekit.command('deploy', { dir: 'dist', env: environment, allowLive: true });
   })
 );
 
