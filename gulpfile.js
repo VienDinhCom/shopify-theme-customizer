@@ -151,7 +151,7 @@ gulp.task('open', () => {
 /* Open
 ----------------------------------------------------*/
 gulp.task('get', () => {
-  return themekit.command('get', { ...options });
+  return themekit.command('get', { ...options, dir: 'src' });
 });
 
 /* Serve
