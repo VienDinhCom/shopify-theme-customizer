@@ -132,7 +132,7 @@ gulp.task(
 gulp.task(
   'deploy',
   gulp.series('clean', 'sync', 'bundle', function proceeding() {
-    return themekit.command('deploy', { dir: 'dist', env: environment, allowLive: true });
+    return themekit.command('deploy', { ...options, allowLive: true });
   })
 );
 
