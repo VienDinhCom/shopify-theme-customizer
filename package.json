@@ -9,10 +9,12 @@
   },
   "devDependencies": {
     "env-kit": "^2.0.4",
+    "exit-hook": "^2.2.1",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-load-plugins": "^2.0.7",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.35.1"
   },
   "prettier": {
     "tabWidth": 2,
