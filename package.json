@@ -5,8 +5,9 @@
   "author": "Vien Dinh <maxvien@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "open": "gulp open",
+    "get": "gulp get",
     "lint": "gulp lint",
+    "open": "gulp open",
     "watch": "gulp watch",
     "deploy": "gulp deploy"
   },

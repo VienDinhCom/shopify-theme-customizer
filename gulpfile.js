@@ -148,6 +148,12 @@ gulp.task('open', () => {
   return themekit.command('open', { ...options });
 });
 
+/* Open
+----------------------------------------------------*/
+gulp.task('get', () => {
+  return themekit.command('get', { ...options });
+});
+
 /* Serve
 ----------------------------------------------------*/
 // gulp.task('serve', async () => {
