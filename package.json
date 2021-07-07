@@ -8,6 +8,7 @@
     "get": "gulp get",
     "lint": "gulp lint",
     "open": "gulp open",
+    "build": "gulp build",
     "watch": "gulp watch",
     "deploy": "gulp deploy"
   },
