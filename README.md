@@ -102,8 +102,8 @@ yarn watch --env=environment
 
 There are two ways to enable LiveReload:
 
-- Installing the [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) extension on Chrome.
-- Adding this code to the `main.js` file.
+- Installing the [LiveReload](http://livereload.com/extensions/) extension on your browser.
+- Adding this code into the `src/main.js` file for best practice.
 
 ```js
 if (process.env.NODE_ENV === 'development') {
@@ -131,7 +131,7 @@ yarn download --env=environment --file=config/settings_data.json
 
 ### Lint
 
-To analyze your code to find problems, you need to install [Shopify CLI](https://shopify.dev/apps/tools/cli/installation)
+First of all, you need to install [Shopify CLI](https://shopify.dev/apps/tools/cli/installation). Then you can run this command to analyze your code to find problems.
 
 ```bash
 yarn lint
