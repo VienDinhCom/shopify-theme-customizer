@@ -132,6 +132,8 @@ gulp.task(
   })
 );
 
+/* Lint
+----------------------------------------------------*/
 gulp.task('lint', async (callback) => {
   try {
     const exec = util.promisify(command.exec);
@@ -141,6 +143,17 @@ gulp.task('lint', async (callback) => {
   } catch (error) {
     console.log(error.stdout);
     callback(error);
+  }
+});
+
+gulp.task('lint:fix', async (callback) => {
+  try {
+    const exec = util.promisify(command.exec);
+    await exec(`npx eslint src --fix`, { stdio: 'inherit' });
+    await exec(`shopify theme check --auto-correct`, { stdio: 'inherit' });
+    callback(null);
+  } catch (error) {
+    callback(null);
   }
 });
 
