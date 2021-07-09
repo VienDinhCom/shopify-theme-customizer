@@ -135,25 +135,26 @@ gulp.task(
 /* Lint
 ----------------------------------------------------*/
 gulp.task('lint', async (callback) => {
-  try {
-    const exec = util.promisify(command.exec);
-    await exec(`npx eslint src`, { stdio: 'inherit' });
-    await exec(`shopify theme check`, { stdio: 'inherit' });
-    callback(null);
-  } catch (error) {
-    console.log(error.stdout);
-    callback(error);
-  }
-});
+  const { argv } = yargs(process.argv);
+  const exec = util.promisify(command.exec);
 
-gulp.task('lint:fix', async (callback) => {
   try {
-    const exec = util.promisify(command.exec);
-    await exec(`npx eslint src --fix`, { stdio: 'inherit' });
-    await exec(`shopify theme check --auto-correct`, { stdio: 'inherit' });
+    if (argv.fix) {
+      await exec(`npx eslint src --fix`, { stdio: 'inherit' });
+      await exec(`shopify theme check --auto-correct`, { stdio: 'inherit' });
+    } else {
+      await exec(`npx eslint src`, { stdio: 'inherit' });
+      await exec(`shopify theme check`, { stdio: 'inherit' });
+    }
+
     callback(null);
   } catch (error) {
-    callback(null);
+    if (argv.fix) {
+      callback(null);
+    } else {
+      console.log(error.stdout);
+      callback(error);
+    }
   }
 });
 
