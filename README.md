@@ -1,13 +1,13 @@
 # 🛍 Shopify Theme Customizer
 
-An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [BrowserSync](https://github.com/Browsersync/browser-sync), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
+An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [LiveReload](http://livereload.com/), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
 
 ## Experience
 
 These are my experience when I have been working on this tool:
 
 - Using [Gulp](https://gulpjs.com/) to Automate & Enhance the Development Workflow.
-- Using [BrowserSync](https://github.com/Browsersync/browser-sync) to Reload the Browser Automatically When Saving the Files.
+- Using [LiveReload](http://livereload.com/) to Reload the Browser Automatically When Saving the Files.
 - Using [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/) to Follow Theme Best Practices.
 - Using [Shopify Theme Kit](https://github.com/Shopify/themekit) to Download, Develop and Deploy the Themes.
 - Using [Liquid](https://marketplace.visualstudio.com/items?itemName=sissel.shopify-liquid) & [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Visual Studio Code Extensions to Format the Source Code.

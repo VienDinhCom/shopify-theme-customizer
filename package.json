@@ -60,5 +60,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "javascript",
+    "gulp",
+    "sass",
+    "eslint",
+    "vscode",
+    "prettier",
+    "liquid",
+    "shopify",
+    "livereload",
+    "vscode-extension",
+    "shopify-theme",
+    "shopify-theme-kit",
+    "shopify-theme-check",
+    "shopify-theme-customizer"
+  ]
 }
