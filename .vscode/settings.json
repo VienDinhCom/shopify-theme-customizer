@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": { "liquid": "html" }
+}
