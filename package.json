@@ -18,7 +18,7 @@
     "@babel/runtime-corejs3": "^7.14.7",
     "@shopify/themekit": "^1.1.9",
     "autoprefixer": "^9.8.6",
-    "eslint-config-next-app": "^2.1.0",
+    "eslint": "^7.30.0",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-livereload": "^4.0.2",
@@ -29,7 +29,18 @@
     "yargs": "^17.0.1"
   },
   "eslintConfig": {
-    "extends": "next-app"
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
   },
   "prettier": {
     "tabWidth": 2,

@@ -1,5 +1,6 @@
 const os = require('os');
 const fs = require('fs');
+const util = require('util');
 const path = require('path');
 const gulp = require('gulp');
 const yargs = require('yargs');
@@ -131,16 +132,17 @@ gulp.task(
   })
 );
 
-gulp.task(
-  'lint',
-  gulp.series('build', function proceeding(callback) {
-    command.exec('shopify theme check dist', function (error, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      callback(error);
-    });
-  })
-);
+gulp.task('lint', async (callback) => {
+  try {
+    const exec = util.promisify(command.exec);
+    await exec(`npx eslint src`, { stdio: 'inherit' });
+    await exec(`shopify theme check`, { stdio: 'inherit' });
+    callback(null);
+  } catch (error) {
+    console.log(error.stdout);
+    callback(error);
+  }
+});
 
 /* Open
 ----------------------------------------------------*/
