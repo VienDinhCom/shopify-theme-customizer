@@ -1,18 +1,21 @@
 # 🛍 Shopify Theme Customizer
 
-An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [LiveReload](http://livereload.com/), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
+An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [LiveReload](http://livereload.com/), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://shopify.dev/themes/tools/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
 
 ## Experience
 
 These are my experience when I have been working on this tool:
 
 - Using [Gulp](https://gulpjs.com/) to Automate & Enhance the Development Workflow.
+- Using [Parcel](https://parceljs.org/) to Bundle all SCSS, JavaScript, Font, Image, ... Assets.
 - Using [LiveReload](http://livereload.com/) to Reload the Browser Automatically When Saving the Files.
-- Using [Shopify Theme Check](https://github.com/Shopify/theme-check), [ESlint](https://eslint.org/) to Follow Theme Best Practices.
+- Using [PostCSS](https://postcss.org/) to Make CSS Code Compatible with Old Browsers.
+- Using [CoreJS](https://github.com/zloirock/core-js) to Make JavaScript Code Compatible with Old Browsers.
+- Using [Shopify Theme Check](https://shopify.dev/themes/tools/theme-check), [ESlint](https://eslint.org/) to Follow Theme Best Practices.
 - Using [Shopify Theme Kit](https://github.com/Shopify/themekit) to Download, Develop and Deploy the Themes.
-- Using [Liquid](https://marketplace.visualstudio.com/items?itemName=sissel.shopify-liquid) & [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Visual Studio Code Extensions to Format the Source Code.
+- Using [Shopify Liquid](https://marketplace.visualstudio.com/items?itemName=Shopify.theme-check-vscode) & [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) Visual Studio Code Extensions to Format the Source Code.
 
-If you like the project, please hit the **STAR** button to support my work. ⭐️
+If you like this project, hit the **STAR** button to bookmark it ⭐️
 
 ## Installation
 
@@ -100,16 +103,7 @@ yarn get --env=environment
 yarn watch --env=environment
 ```
 
-There are two ways to enable LiveReload:
-
-- Installing the [LiveReload](http://livereload.com/extensions/) extension on your browser.
-- Adding this code into the `src/main.js` file for best practice.
-
-```js
-if (process.env.NODE_ENV === 'development') {
-  document.write('<script src="http://localhost:35729/livereload.js"></script>');
-}
-```
+To enable LiveReload, you need to install the [LiveReload](http://livereload.com/extensions/) extension on your browser.
 
 ### Deploy
 
@@ -126,7 +120,7 @@ yarn download --env=environment --file=[your theme file]
 For example, you can run this command to download the `config/settings_data.json` file
 
 ```bash
-yarn download --env=environment --file=config/settings_data.json
+yarn download --env=production --file=config/settings_data.json
 ```
 
 ### Lint
