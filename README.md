@@ -100,10 +100,33 @@ yarn get --env=environment
 yarn watch --env=environment
 ```
 
+There are two ways to enable LiveReload:
+
+- Installing the [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) extension on Chrome.
+- Adding this code to the `main.js` file.
+
+```js
+if (process.env.NODE_ENV === 'development') {
+  document.write('<script src="http://localhost:35729/livereload.js"></script>');
+}
+```
+
 ### Deploy
 
 ```bash
 yarn deploy --env=environment
+```
+
+### Download
+
+```bash
+yarn download --env=environment --file=[your theme file]
+```
+
+For example, you can run this command to download the `config/settings_data.json` file
+
+```bash
+yarn download --env=environment --file=config/settings_data.json
 ```
 
 ### Lint
@@ -118,6 +141,18 @@ Automatically fix problems
 
 ```bash
 yarn lint --fix
+```
+
+### Open
+
+```bash
+yarn open --env=environment
+```
+
+### Build
+
+```bash
+yarn build
 ```
 
 ## Visual Studio Code Extensions

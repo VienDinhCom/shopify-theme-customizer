@@ -164,10 +164,22 @@ gulp.task('open', () => {
   return themekit.command('open', { ...options });
 });
 
-/* Open
+/* Get
 ----------------------------------------------------*/
 gulp.task('get', () => {
   return themekit.command('get', { ...options, dir: 'src' });
+});
+
+/* Download
+----------------------------------------------------*/
+gulp.task('download', () => {
+  const { argv } = yargs(process.argv);
+
+  return themekit.command('download', {
+    ...options,
+    dir: 'src',
+    files: [argv.file],
+  });
 });
 
 /* Serve

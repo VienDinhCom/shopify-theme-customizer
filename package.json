@@ -10,7 +10,8 @@
     "open": "gulp open",
     "build": "gulp build",
     "watch": "gulp watch",
-    "deploy": "gulp deploy"
+    "deploy": "gulp deploy",
+    "download": "gulp download"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
