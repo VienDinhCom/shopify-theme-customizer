@@ -2,7 +2,7 @@
 
 An effective development tool for customizing existing Shopify themes. It's built with [Gulp](https://gulpjs.com/), [LiveReload](http://livereload.com/), [Shopify Theme Kit](https://github.com/Shopify/themekit), [Shopify Theme Check](https://shopify.dev/themes/tools/theme-check), [ESlint](https://eslint.org/), [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), ... and [Passion](https://www.urbandictionary.com/define.php?term=Passion).
 
-> I archived this project and the code to this [repository](https://github.com/Maxvien/bootstrap-shopify-theme). You also can find new updates there.
+> I archived this project and moved the code to this [repository](https://github.com/Maxvien/bootstrap-shopify-theme). You also can find new updates there.
 
 
 ## Experience
